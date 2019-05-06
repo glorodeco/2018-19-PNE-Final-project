@@ -6,12 +6,12 @@ ESEMBL REST API ENDPOINTS:
 
         for list species = "/info/species?"
         for karyotype = "/info/assembly/{}?".format(msg_split[1]) where msg_split[1] is the specie
-        for chromo length = /info/assembly/{}?".format(msg_split2[1])
+        for chromo length = /info/assembly/{}?".format(msg_split2[1]) where the variable is the input introduce (chromosome of a specie)
         for gene sequence = /lookup/symbol/homo_sapiens/{}?".format(msg_split[1]) where msg_split[1] is the gene
         for gene info = "/lookup/symbol/homo_sapiens/{}?".format(msg_split[1]) where msg_split[1] is the gene
         for gene calculation = /lookup/symbol/homo_sapiens/{}?".format(msg_split[1]) where msg_split[1] is the gene
         for gene list = /overlap/region/human/" + str(msg_split2[1]) + ":" + msg_split2[3] + "-" + msg_split2[
-                        5] + "?feature=gene"
+                        5] + "?feature=gene"  where the variables are the 3 inputs introduced (end, start and gene)
 
 
 PROVES:
