@@ -152,7 +152,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         r = requests.get(server + ext, headers={"Content-Type": "application/json"})
 
                         info = r.json()
-
+                        name=''
                         if msg_split[1] == info['display_name']:
                             name = info['id']
 
@@ -210,7 +210,8 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                     with open("gene_info_gene.html", "r") as f:
                             contents = f.read()
-                            text= 'The start of the human gene ' + msg_split[1] + ' is: ' + str(start) + '</p></p>' + 'The end of the human gene ' + msg_split[1] + ' is: ' + str(end) + '</p></p>' + 'The id of the human gene ' + msg_split[1] + ' is: ' + str(id) +'</p></p>' + 'The gen ' + msg_split[1] + ' is in  the chromosome: ' + str(chromo)
+                            len= end-start
+                            text= 'The start of the human gene ' + msg_split[1] + ' is: ' + str(start) + '</p></p>' + 'The end of the human gene ' + msg_split[1] + ' is: ' + str(end) + '</p></p>' + 'The lenght of the human gene ' + msg_split[1] + ' is: ' + str(len) +'</p></p>' + 'The id of the human gene ' + msg_split[1] + ' is: ' + str(id) +'</p></p>' + 'The gen ' + msg_split[1] + ' is in  the chromosome: ' + str(chromo)
                             contents = contents.replace('#', text)
 
 
@@ -292,7 +293,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     server = "http://rest.ensembl.org"
 
                     ext = "/overlap/region/human/" + str(msg_split2[1]) + ":" + msg_split2[3] + "-" + msg_split2[
-                        5] + "?feature=gene;feature=transcript;feature=cds;feature=exon"
+                        5] + "?feature=gene"
 
                     r = requests.get(server + ext, headers={"Content-Type": "application/json"})
 
@@ -300,7 +301,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                     sentence = 'The genes in the chromosome ' + msg_split2[1] + ' of the homo sapiens ' + ' between ' + msg_split2[3] + ' and ' + msg_split2[5] + ' are: '
                     for i in inform:
-                        sentence += '<p>' + i['id'] + '<p>'
+                        sentence += '<p>' + i['external_name'] + '<p>'
 
                     with open("gene_listRes.html", "r") as f:
                             contents = f.read()
@@ -349,6 +350,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 # -- Main program
 
+socketserver.TCPServer.allow_reuse_address = True
 with socketserver.TCPServer(("", PORT), TestHandler) as httpd:
 
     print("Serving at PORT:  {}".format(PORT))
