@@ -1,0 +1,1152 @@
+ENDPOINT: listSpecies, karyotype, chromosomeLength, geneSeq, geneInfo, geneCalc, geneList
+
+ESEMBL REST API ENDPOINTS:
+
+        server = "http://rest.ensembl.org"
+
+        for list species = "/info/species?"
+        for karyotype = "/info/assembly/{}?".format(msg_split[1]) where msg_split[1] is the specie
+        for chromo length = /info/assembly/{}?".format(msg_split2[1])
+        for gene sequence = /lookup/symbol/homo_sapiens/{}?".format(msg_split[1]) where msg_split[1] is the gene
+        for gene info = "/lookup/symbol/homo_sapiens/{}?".format(msg_split[1]) where msg_split[1] is the gene
+        for gene calculation = /lookup/symbol/homo_sapiens/{}?".format(msg_split[1]) where msg_split[1] is the gene
+        for gene list = /overlap/region/human/" + str(msg_split2[1]) + ":" + msg_split2[3] + "-" + msg_split2[
+                        5] + "?feature=gene"
+
+
+PROVES:
+
+        1. Main Page
+        LINK: http://localhost:8000/main_page
+
+            output:<!DOCTYPE html>
+
+            <html lang="en" dir="ltr">
+
+              <head>
+
+                <meta charset="utf-8">
+
+                <title>Welcome Page</title>
+
+
+
+              </head>
+              <body style="background-color: #76FFDD;">
+
+                <h1><font size="7" face="Georgia, Arial" color="#990000">Species analysis</font></h1>
+                <h3>Welcome to our page. Let's Start!!</h3>
+
+                <HR>
+                <p>The options are: </p>
+                <UL>
+
+                <LI><a href="listSpecies">LIST OF SPECIES</a><br>
+
+                <LI><a href="karyotype">KARYOTYPE</a><br>
+
+                <LI><a href="chromosomeLength">CHROMOSOME LENGTH</a><br>
+
+                <LI><a href="geneSeq">GENE SEQUENCE</a><br>
+
+                <LI><a href="geneInfo">GENE INFO</a><br>
+
+                <LI><a href="geneCalc">GENE CALCULATIONS</a><br>
+
+                <LI><a href="geneList">GENES IN THE CHROMOSOME</a><br>
+
+              </body>
+
+            </html>
+
+
+
+         2. LIST SPECIES
+
+            1. GENERAL PAGE
+                LINK: http://localhost:8000/listSpecies
+                output:
+
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>List of species </title>
+
+                        </head>
+
+                        <body>
+
+                            <h1><font size="7" face="Georgia, Arial" color="#76FFA3">LIST OF SPECIES</font></h1>
+
+                            <p>WELCOME TO THE LIST OF SPECIES PAGE</p>
+
+
+
+                            <form action="listSpecies" method="get">
+
+                                Number of species*:  <input type="text" name="limit">
+
+                                <br>
+
+                                <input type="submit" value="SEND">
+
+                                <br><br>
+
+                            </form>
+                            <p>*Note: In order to see the whole list of species, click on the send button without introducing a number</p>
+                            <p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+
+            3. ALL SPECIES:
+                    link: http://localhost:8000/listSpecies?limit=
+                    OUTPUT:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Species's List</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1><font size="7" face="Georgia, Arial" color="List of species: <p>mus_musculus<p>homo_sapiens<p>cavia_porcellus<p>mus_musculus_cbaj<p>amphilophus_citrinellus<p>anolis_carolinensis<p>cebus_capucinus<p>labrus_bergylta<p>panthera_pardus<p>takifugu_rubripes<p>rhinopithecus_bieti<p>mastacembelus_armatus<p>lepidothrix_coronata<p>fukomys_damarensis<p>monodelphis_domestica<p>equus_asinus_asinus<p>xiphophorus_maculatus<p>apteryx_owenii<p>calidris_pugnax<p>gasterosteus_aculeatus<p>cricetulus_griseus_picr<p>mus_spicilegus<p>oryzias_melastigma<p>nannospalax_galili<p>chelonoidis_abingdonii<p>acanthochromis_polyacanthus<p>scleropages_formosus<p>sarcophilus_harrisii<p>gallus_gallus<p>latimeria_chalumnae<p>numida_meleagris<p>mus_musculus_aj<p>poecilia_latipinna<p>phascolarctos_cinereus<p>mus_musculus_fvbnj<p>cricetulus_griseus_chok1gshd<p>mus_musculus_lpj<p>heterocephalus_glaber_female<p>calidris_pygmaea<p>anas_platyrhynchos_platyrhynchos<p>saimiri_boliviensis_boliviensis<p>lonchura_striata_domestica<p>callithrix_jacchus<p>ovis_aries<p>papio_anubis<p>macaca_fascicularis<p>notechis_scutatus<p>capra_hircus<p>fundulus_heteroclitus<p>ursus_americanus<p>mus_musculus_nzohlltj<p>notamacropus_eugenii<p>tursiops_truncatus<p>gambusia_affinis<p>felis_catus<p>pan_paniscus<p>nomascus_leucogenys<p>chlorocebus_sabaeus<p>bos_taurus<p>amphiprion_ocellaris<p>mus_pahari<p>coturnix_japonica<p>carlito_syrichta<p>apteryx_haastii<p>macaca_nemestrina<p>sphenodon_punctatus<p>anser_brachyrhynchus<p>anabas_testudineus<p>lepisosteus_oculatus<p>rhinopithecus_roxellana<p>spermophilus_dauricus<p>poecilia_formosa<p>scophthalmus_maximus<p>mus_spretus<p>petromyzon_marinus<p>xenopus_tropicalis<p>gopherus_agassizii<p>bison_bison_bison<p>mus_musculus_129s1svimj<p>ictalurus_punctatus<p>octodon_degus<p>colobus_angolensis_palliatus<p>manacus_vitellinus<p>astatotilapia_calliptera<p>prolemur_simus<p>mus_musculus_wsbeij<p>dasypus_novemcinctus<p>kryptolebias_marmoratus<p>mus_musculus_dba2j<p>urocitellus_parryii<p>gorilla_gorilla<p>microcebus_murinus<p>mandrillus_leucophaeus<p>pogona_vitticeps<p>neovison_vison<p>parus_major<p>macaca_mulatta<p>ornithorhynchus_anatinus<p>oryzias_latipes_hni<p>eptatretus_burgeri<p>canis_lupus_dingo<p>danio_rerio<p>mus_musculus_nodshiltj<p>stegastes_partitus<p>chinchilla_lanigera<p>mus_musculus_c57bl6nj<p>astyanax_mexicanus<p>ictidomys_tridecemlineatus<p>vicugna_pacos<p>crocodylus_porosus<p>zonotrichia_albicollis<p>amphiprion_percula<p>panthera_tigris_altaica<p>meleagris_gallopavo<p>piliocolobus_tephrosceles<p>marmota_marmota_marmota<p>serinus_canaria<p>apteryx_rowi<p>salvator_merianae<p>choloepus_hoffmanni<p>mus_caroli<p>sorex_araneus<p>taeniopygia_guttata<p>theropithecus_gelada<p>hippocampus_comes<p>cavia_aperea<p>periophthalmus_magnuspinnatus<p>aotus_nancymaae<p>myotis_lucifugus<p>sus_scrofa<p>propithecus_coquereli<p>drosophila_melanogaster<p>pundamilia_nyererei<p>echinops_telfairi<p>junco_hyemalis<p>vulpes_vulpes<p>pan_troglodytes<p>cricetulus_griseus_crigri<p>seriola_dumerili<p>erinaceus_europaeus<p>loxodonta_africana<p>neolamprologus_brichardi<p>pelodiscus_sinensis<p>microtus_ochrogaster<p>mola_mola<p>ursus_maritimus<p>dromaius_novaehollandiae<p>oryctolagus_cuniculus<p>xiphophorus_couchianus<p>cyprinodon_variegatus<p>ciona_intestinalis<p>pygocentrus_nattereri<p>esox_lucius<p>ochotona_princeps<p>mustela_putorius_furo<p>ciona_savignyi<p>meriones_unguiculatus<p>paramormyrops_kingsleyae<p>jaculus_jaculus<p>dipodomys_ordii<p>cercocebus_atys<p>oreochromis_niloticus<p>pongo_abelii<p>chrysemys_picta_bellii<p>maylandia_zebra<p>equus_caballus<p>mesocricetus_auratus<p>pteropus_vampyrus<p>seriola_lalandi_dorsalis<p>cyanistes_caeruleus<p>mus_musculus_pwkphj<p>gadus_morhua<p>haplochromis_burtoni<p>saccharomyces_cerevisiae<p>cynoglossus_semilaevis<p>canis_familiaris<p>monopterus_albus<p>ailuropoda_melanoleuca<p>castor_canadensis<p>melopsittacus_undulatus<p>peromyscus_maniculatus_bairdii<p>ficedula_albicollis<p>bos_mutus<p>mus_musculus_balbcj<p>mus_musculus_casteij<p>rattus_norvegicus<p>otolemur_garnettii<p>heterocephalus_glaber_male<p>caenorhabditis_elegans<p>poecilia_reticulata<p>oryzias_latipes_hsok<p>tetraodon_nigroviridis<p>nothoprocta_perdicaria<p>tupaia_belangeri<p>mus_musculus_c3hhej<p>poecilia_mexicana<p>oryzias_latipes<p>procavia_capensis<p>mus_musculus_akrj<p>76FFA3">LIST OF SPECIES</font></h1>
+
+                            <p>List of species: <p>mus_musculus<p>homo_sapiens<p>cavia_porcellus<p>mus_musculus_cbaj<p>amphilophus_citrinellus<p>anolis_carolinensis<p>cebus_capucinus<p>labrus_bergylta<p>panthera_pardus<p>takifugu_rubripes<p>rhinopithecus_bieti<p>mastacembelus_armatus<p>lepidothrix_coronata<p>fukomys_damarensis<p>monodelphis_domestica<p>equus_asinus_asinus<p>xiphophorus_maculatus<p>apteryx_owenii<p>calidris_pugnax<p>gasterosteus_aculeatus<p>cricetulus_griseus_picr<p>mus_spicilegus<p>oryzias_melastigma<p>nannospalax_galili<p>chelonoidis_abingdonii<p>acanthochromis_polyacanthus<p>scleropages_formosus<p>sarcophilus_harrisii<p>gallus_gallus<p>latimeria_chalumnae<p>numida_meleagris<p>mus_musculus_aj<p>poecilia_latipinna<p>phascolarctos_cinereus<p>mus_musculus_fvbnj<p>cricetulus_griseus_chok1gshd<p>mus_musculus_lpj<p>heterocephalus_glaber_female<p>calidris_pygmaea<p>anas_platyrhynchos_platyrhynchos<p>saimiri_boliviensis_boliviensis<p>lonchura_striata_domestica<p>callithrix_jacchus<p>ovis_aries<p>papio_anubis<p>macaca_fascicularis<p>notechis_scutatus<p>capra_hircus<p>fundulus_heteroclitus<p>ursus_americanus<p>mus_musculus_nzohlltj<p>notamacropus_eugenii<p>tursiops_truncatus<p>gambusia_affinis<p>felis_catus<p>pan_paniscus<p>nomascus_leucogenys<p>chlorocebus_sabaeus<p>bos_taurus<p>amphiprion_ocellaris<p>mus_pahari<p>coturnix_japonica<p>carlito_syrichta<p>apteryx_haastii<p>macaca_nemestrina<p>sphenodon_punctatus<p>anser_brachyrhynchus<p>anabas_testudineus<p>lepisosteus_oculatus<p>rhinopithecus_roxellana<p>spermophilus_dauricus<p>poecilia_formosa<p>scophthalmus_maximus<p>mus_spretus<p>petromyzon_marinus<p>xenopus_tropicalis<p>gopherus_agassizii<p>bison_bison_bison<p>mus_musculus_129s1svimj<p>ictalurus_punctatus<p>octodon_degus<p>colobus_angolensis_palliatus<p>manacus_vitellinus<p>astatotilapia_calliptera<p>prolemur_simus<p>mus_musculus_wsbeij<p>dasypus_novemcinctus<p>kryptolebias_marmoratus<p>mus_musculus_dba2j<p>urocitellus_parryii<p>gorilla_gorilla<p>microcebus_murinus<p>mandrillus_leucophaeus<p>pogona_vitticeps<p>neovison_vison<p>parus_major<p>macaca_mulatta<p>ornithorhynchus_anatinus<p>oryzias_latipes_hni<p>eptatretus_burgeri<p>canis_lupus_dingo<p>danio_rerio<p>mus_musculus_nodshiltj<p>stegastes_partitus<p>chinchilla_lanigera<p>mus_musculus_c57bl6nj<p>astyanax_mexicanus<p>ictidomys_tridecemlineatus<p>vicugna_pacos<p>crocodylus_porosus<p>zonotrichia_albicollis<p>amphiprion_percula<p>panthera_tigris_altaica<p>meleagris_gallopavo<p>piliocolobus_tephrosceles<p>marmota_marmota_marmota<p>serinus_canaria<p>apteryx_rowi<p>salvator_merianae<p>choloepus_hoffmanni<p>mus_caroli<p>sorex_araneus<p>taeniopygia_guttata<p>theropithecus_gelada<p>hippocampus_comes<p>cavia_aperea<p>periophthalmus_magnuspinnatus<p>aotus_nancymaae<p>myotis_lucifugus<p>sus_scrofa<p>propithecus_coquereli<p>drosophila_melanogaster<p>pundamilia_nyererei<p>echinops_telfairi<p>junco_hyemalis<p>vulpes_vulpes<p>pan_troglodytes<p>cricetulus_griseus_crigri<p>seriola_dumerili<p>erinaceus_europaeus<p>loxodonta_africana<p>neolamprologus_brichardi<p>pelodiscus_sinensis<p>microtus_ochrogaster<p>mola_mola<p>ursus_maritimus<p>dromaius_novaehollandiae<p>oryctolagus_cuniculus<p>xiphophorus_couchianus<p>cyprinodon_variegatus<p>ciona_intestinalis<p>pygocentrus_nattereri<p>esox_lucius<p>ochotona_princeps<p>mustela_putorius_furo<p>ciona_savignyi<p>meriones_unguiculatus<p>paramormyrops_kingsleyae<p>jaculus_jaculus<p>dipodomys_ordii<p>cercocebus_atys<p>oreochromis_niloticus<p>pongo_abelii<p>chrysemys_picta_bellii<p>maylandia_zebra<p>equus_caballus<p>mesocricetus_auratus<p>pteropus_vampyrus<p>seriola_lalandi_dorsalis<p>cyanistes_caeruleus<p>mus_musculus_pwkphj<p>gadus_morhua<p>haplochromis_burtoni<p>saccharomyces_cerevisiae<p>cynoglossus_semilaevis<p>canis_familiaris<p>monopterus_albus<p>ailuropoda_melanoleuca<p>castor_canadensis<p>melopsittacus_undulatus<p>peromyscus_maniculatus_bairdii<p>ficedula_albicollis<p>bos_mutus<p>mus_musculus_balbcj<p>mus_musculus_casteij<p>rattus_norvegicus<p>otolemur_garnettii<p>heterocephalus_glaber_male<p>caenorhabditis_elegans<p>poecilia_reticulata<p>oryzias_latipes_hsok<p>tetraodon_nigroviridis<p>nothoprocta_perdicaria<p>tupaia_belangeri<p>mus_musculus_c3hhej<p>poecilia_mexicana<p>oryzias_latipes<p>procavia_capensis<p>mus_musculus_akrj<p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+
+            4. LIMIT SPECIES (4 IN THIS CASE):
+
+                    link: http://localhost:8000/listSpecies?limit=4
+                    OUTPUT:
+
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Species's List</title>
+
+                            </head>
+
+                            <body>
+
+                                <h1><font size="7" face="Georgia, Arial" color="List of species: <p>mus_musculus<p>homo_sapiens<p>cavia_porcellus<p>mus_musculus_cbaj<p>76FFA3">LIST OF SPECIES</font></h1>
+
+                                <p>List of species: <p>mus_musculus<p>homo_sapiens<p>cavia_porcellus<p>mus_musculus_cbaj<p></p>
+
+                                <a href="main_page">Return to the main page</a>
+
+
+
+                            </body>
+
+                            </html>
+
+
+            5. ERROR (It's not a number):
+                    link: http://localhost:8000/listSpecies?limit=hello
+                    OUTPUT:
+
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+
+
+        2. KARYOTYPE:
+
+                1. MAIN PAGE:
+                LINK: http://localhost:8000/karyotype
+                OUTPUT:
+
+                       <!DOCTYPE html>
+
+                       <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Karyotype page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>KARYOTYPE</h1>
+
+                            <p>WELCOME TO THE KARYOTYPE PAGE</p>
+
+                            <form action="karyotype" method="get">
+
+                                Species  <input type="text" name="species">
+
+                                <br>
+
+                                <input type="submit" value="SEND">
+
+                                <br><br>
+
+                                <br><br>
+
+                            </form>
+
+                            <p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+
+
+                2. A specie introduced (pig)
+                    link= http://localhost:8000/karyotype?species=pig
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>karyotype</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>KARYOTYPE</h1>
+
+                            <p>The karyotype of pig is: 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 X Y MT  </p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+                3. No specie introduced (error page)
+
+                    link= http://localhost:8000/karyotype?species=
+                    output:
+
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+                4. No specie in the data (pollo)
+                    link: http://localhost:8000/karyotype?species=pollo
+                    output:
+
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+                5. Numbers introduced (error page)
+
+                    link: http://localhost:8000/karyotype?species=30
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Error</title>
+
+                        </head>
+
+                        <body style="background-color: red;">
+
+                            <h1>Error 404</h1>
+                            <h2>PAGE NOT FOUND</h2>
+
+                            <p>We're sorry. An error has been found</p>
+
+                        </body>
+
+                        </html>
+
+        3. CROMO. LENGTH
+
+                1. General page:
+
+                    link: http://localhost:8000/chromosomeLength
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Chromosome length page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>CHROMOSOME LENGTH</h1>
+
+                            <p>WELCOME TO THE CHROMOSOME LENGTH PAGE</p>
+
+                            <form action="chromosomeLength" method="get">
+
+                                Species  <input type="text" name="specie">
+
+                                <br>
+
+                                Chromosome  <input type="text" name="chromo">
+
+                                <br>
+
+                                <input type="submit" value="SEND">
+
+                                <br><br>
+
+                                <br><br>
+
+                            </form>
+
+                            <p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+                2. Specie: human Cromosome introduced: X
+                    link:http://localhost:8000/chromosomeLength?specie=human&chromo=X
+                    output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Chromosome length page</title>
+
+                            </head>
+
+                            <body>
+
+                                <h1>CHROMOSOME LENGTH PAGE</h1>
+
+                                <p> The length of the chromosome X of the species human is: 156040895 </p>
+
+                                <a href="main_page">Return to the main page</a>
+
+
+
+                            </body>
+
+                            </html>
+
+                3. Error in the data introduced:
+                    link: http://localhost:8000/chromosomeLength?specie=pop&chromo=X
+                    output:
+
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Error</title>
+
+                        </head>
+
+                        <body style="background-color: red;">
+
+                            <h1>Error 404</h1>
+                            <h2>PAGE NOT FOUND</h2>
+
+                            <p>We're sorry. An error has been found</p>
+
+                        </body>
+
+                        </html>
+
+
+                4. If you leave an option in blank:
+                    link: http://localhost:8000/chromosomeLength?specie=pop&chromo=
+                    output:
+
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Error</title>
+
+                        </head>
+
+                        <body style="background-color: red;">
+
+                            <h1>Error 404</h1>
+                            <h2>PAGE NOT FOUND</h2>
+
+                            <p>We're sorry. An error has been found</p>
+
+                        </body>
+
+                        </html>
+
+
+                5. Other example:
+                    link:http://localhost:8000/chromosomeLength?specie=pig&chromo=1
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Chromosome length page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>CHROMOSOME LENGTH PAGE</h1>
+
+                            <p> The length of the chromosome 1 of the species pig is: 274330532 </p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+        4. GENE SEQUENCE PAGE
+
+                1. GENERAL PAGE
+                    link: http://localhost:8000/geneSeq
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene sequence page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE SEQUENCE</h1>
+
+                            <p>WELCOME TO THE GENE SEQUENCE PAGE</p>
+
+                            <form action="geneSeq" method="get">
+
+                                Human gene  <input type="text" name="gene">
+
+                                <br>
+
+                                <input type="submit" value="SEND">
+
+                                <br><br>
+
+                                <br><br>
+
+                            </form>
+
+                            <p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+                2. FRAT1 introduced:
+                    link: http://localhost:8000/geneSeq?gene=FRAT1
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene sequence page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE SEQUENCE</h1>
+
+                            <p>The sequence of the human gene FRAT1 is ATTCCGGCTCCCGCGGCTGCAGGCGCGCGGCTAGAGTGCCTGGCGGGCTCCGGCTTCCGCGTCCGCCCCGGCCCCGGTCCAGACTTAGTCTTCAGCTCCGCGCCCGCTCCGCCGCGGCCCACCGCGCCCGCCGGCAGCCGAGCCCCCAGCGACGCCCGCACAGCTCCGGGTGCCCAGACAGGGGGCCATGCCGTGCCGGAGGGAGGAGGAAGAGGAAGCCGGCGAGGAGGCGGAGGGGGAGGAAGAGGAGGAGGACAGCTTCCTCCTACTGCAGCAGTCAGTGGCGCTGGGCAGCTCGGGCGAGGTGGACCGGCTGGTGGCCCAGATCGGCGAGACGCTGCAGCTGGACGCGGCGCAGCACAGCCCGGCCTCGCCGTGCGGGCCCCCGGGGGCGCCGCTGCGGGCCCCGGGGCCCCTGGCTGCGGCGGTGCCGGCGGACAAGGCCAGGTCCCCGGCGGTGCCGCTGCTGCTGCCGCCCGCGTTGGCGGAGACTGTGGGCCCGGCGCCCCCTGGGGTCCTGCGCTGCGCCCTGGGGGACCGCGGCCGCGTGCGGGGCCGCGCTGCGCCCTACTGCGTGGCCGAGCTCGCCACAGGCCCCAGCGCGCTGTCCCCACTGCCCCCTCAGGCCGACCTTGATGGGCCTCCGGGAGCTGGCAAGCAGGGCATCCCGCAGCCGCTGTCGGGTCCGTGCCGGCGAGGATGGCTCCGGGGCGCCGCCGCCTCCCGCCGCCTGCAGCAGCGACGCGGGTCCCAACCAGAAACCCGCACAGGCGACGACGACCCGCACCGGCTTCTGCAGCAGCTAGTGCTCTCTGGAAACCTCATCAAGGAGGCCGTGCGAAGGCTTCATTCGCGACGGCTGCAGTTACGTGCAAAGCTTCCCCAACGCCCGCTCCTGGGACCTCTGTCGGCCCCGGTGCATGAACCCCCTTCGCCTCGCAGCCCTCGCGCGGCCTGCAGTGACCCTGGCGCCTCCGGGAGGGCGCAGCTCAGAACTGGCGACGGCGTTCTTGTGCCTGGCAGCTAACACGCCCGGGGTGGCCACAGCGCCAGCCTCAGACTGGAGGGCAAGGGGTTCCCTTGAGGGCTGCAGTTCTACTCAGGCTGGTGGAGAACTCTGGCTTTTGGAAGCGAGAGTAAAAAGCTAATGACGAGGAACCGAAAAATCGCGAGTGTTTCGCGGGTAACTGGGGTTGAGGGCCAAAATATTTGGAATGAAGGACTTTGGCCCTATTTAAGGCAGATTTTACAGAGCGCACCTCAAACGTACAAGTCAGTAGGACTCCTTATTTGGCGTGACCCGACCTGGCCGCGGAGCCTGCATTTCCTCGCAGCCTCTCAGTGCCCTCCAGCCCCGCGACCATGTGGCCACAATCCACGCTTCTCCGGATCGCGGTGCGCCGGAACCACGGAGGATGATGCCAGTTACTTGCTTTACCTTTTCAGGGCTGGCTCCTGATCCACTTTGGGGGAGGAGAACATGAGTAGATAATTTCAGGGTGCAGCCCAATCTGCCAGACTTAAAAAAACCATCTTGTGTCTTTGGAGGTGCTGCTTAATACCAAACATGCGGTGCCATGAAGGGACCCTTTGGGGGTTGAATAGGAGTTAACCCCTGCGCTCTCTTTGCAACTGTCTCTCTTCTCAGAGTGGTGGGGGAAGGCTGTACGACACGGGTGGGGAAAGGAGGTGGGGGCGGGGAGTATTGAATGGTGGTGGAAGGGTAGAGAGGCGCGGAGTGAACCCCACGCCCTGTCTAAAGTGTATTTTCAGAGCCGGCCCGCCTCTCCTCGGTTCAAGGTCACTGTTTCCTGGGCACGCACTGGGTTGCGGGACAGAGTAGCCAGGTTCTGCCGGTGCTCGGAGAAGAGCGCAGTGTTTTGCAAGTGCTGGAGTCTCCTGAGGACACGCGCGTCGCCGCCACCGCGGGTGTGGGAAAGCGCGGACGTGCTGGGCGGCTGTGCTTCGGTAGGCGACCACCGCCCCTGGCCGCGCTCCGGGCTTTCACGGAAACTCCCGAGACCGGGCCCTGGGTTCCTCCTCTCCTACTCGGCTCTGCAGTCCTACTCAAGCGGGTGGCTCTGGGATCCTGGGGGCCTGGGTTGGGGGCTAGGGAGACGCCATGTGATGGACACTCCAGGGACACACAGCCTAGCACAGCAGCTTATAATGGGCTCTCCGGGGCCATTTGCAATAACAGCTGCAATTCCCTGGATAGACGAGTTGATTTCCTCCCTCTGCCCCTCCCCCAGCCATGCCAGCTGGCCTTTGTAAGTGCAGGAAACCGAGTAGAAAATGTGACCCTCCAAATGGAGAAGCTGCAGGCTTTGCCATTGTGAACCATGGTGAAGTGCTTGGAACATACTGTTCACTCACTCTAAAGGCGCTGAGACTGTGCTGTTGTTCTCGTTTTTATAGTCAATGGCTTGTTCATCATCCAGATGTGGCTACTGACATATCTACACTTCGCACCGGAGTGTCTGGAATTGTGGCTATCCTGATTATAGGATTTTAACTTAACTGAAATGCCTGCTTTGAATAAATGTGTTGGGTTTTTTGTTTGGTTTTATTTTATACTTGCCATCAGTGAAAAAGATGTACAGAACACATTTCTCTGATCTCCATAAACATGAAAACACTTGAAATCTC</p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+                3. When the input is not a human gene:
+                    link:http://localhost:8000/geneSeq?gene=2346
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Error</title>
+
+                        </head>
+
+                        <body style="background-color: red;">
+
+                            <h1>Error 404</h1>
+                            <h2>PAGE NOT FOUND</h2>
+
+                            <p>We're sorry. An error has been found</p>
+
+                        </body>
+
+                        </html>
+
+                4. Blank space:
+                    link: http://localhost:8000/geneSeq?gene=
+                    output:
+
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Error</title>
+
+                        </head>
+
+                        <body style="background-color: red;">
+
+                            <h1>Error 404</h1>
+                            <h2>PAGE NOT FOUND</h2>
+
+                            <p>We're sorry. An error has been found</p>
+
+                        </body>
+
+                        </html>
+
+                5. gene introduced: PLCXD1
+                    link: http://localhost:8000/geneSeq?gene=PLCXD1
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene sequence page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE SEQUENCE</h1>
+
+                            <p>The sequence of the human gene PLCXD1 is GTGTTTTAGGAAGAGTGTCCCGCAGAGACCCGGCGGGAGCTGCCAGGAGCTCTGGGATTCCAGCGGCTGGAAGGTGAGTGTGTCTACCCCGTTCTCCTGATGGCAAGTCCCCTACGGGGGACGTGGCGGGTGCCGTCTGTGCCTGTTGTGGGCTGGGAATCAGGAACCCGCGCTTCCGTCATTGAGGCTCCTTCTCCTCCTCCTGGGACCCTTAGCTGGGGGCACGGGCAGGGGGTTCAGGGGGAGGGTCGCCTGGGATCTGTGGCCTGGACGTTGGCAGCCACAGGCGGCCTGCACCCCTTGCAGACCGTGAATTCTCTGCCGGGTCAGAGCCGCGGAGCCAGTGTGGAAACAGCCCAGGACGGTTATGAAATGAGCCCGGGGGCCACGACTTGCTTGGCCGGTTGGACGTCCTCACCCTGCCGCCGGGGCCTGCGTGGGGACGGGTCGGGACAGCTGGGACGGTGGGGATGTTGGGGCACTGGGAATGCTGGGATCTGAGCACCCCTGTCCTTCCGTTGATTCACCCAGCAACCATTCACCCCGTGCGTTGAATGTGCGCGTCACGGCCACTCACGCCTCTGGGACGTGAGTCTCCCGAGGACTCAGCGGGCGGGAAGGTGTAGGTGTCTCACCCCGCCTGGCGGGTCACCGGGCGTCTGGGCCCGTCCGTCATCTGCGCTGTCCCGCCGCGACCGTGAAGGCCAGGGTGGAGAGGACCTCCCCCAGGAAGGGTCAGTGCTCCGTGGGACGGCCTCCAGACCCCACTCCGCTGTGCCGTCCGGACGAGATGGCAGAGGTGGCTGGGAGTGGGGGCCGCCCCCGGGGCTCCTTCCTGCTCCACTTTGTCATGTGTGGGGAAGGCGTCGGGGGACCTGGGGACAGGAGGGGGCGCCCCTCAGTGGTCAGGGGACTTGGGATGTGAGGGGAGGGGTCAGGGGGAACGTGGGGACAGATGTGGGGATAGGAGGGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTTGGGGAACGTGGGGACAGGTGTGGGGACAGGAGGGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTCAGGGCACGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGCTCAGGAGGACATGGGGACAGGTGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTCAGGGCACGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGCTCAGGAGGACATGGGGACAGGTGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTCAGGGCACGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTCAGGGCACGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGCTCAGGAGGACATGGGGACAGGTGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTCAGGGGGAACGTGGGGACAGGTGTGGGGATAGGAGGGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGGAGGGGTCAGGGGGAATGTGGGGACAGGTGTGGGGATAGGAGCGGACACCCCTCAGTGGTCAGGGGACCTGGGATGTGAGGGAGGGCTCAGGAGGACATGGGGACAGGTGTGGGGACAGGAGTGGACACCCCTCAGTGGTCAGGGGACTTGGGATGTGAGGGGAGGGGTCGGGGGACGTGGGGACAGGAGGGGACACCCCTCAGTGGTCAGGGGACCTGGGATATGATGAAGGTGACGGGAGGGGAGGGACTGTGACGGGGGAAGGGACTGTGATGGGAGGGAGGGAGTATGACAGTAGCCGGAATGGATGGAATCCGTCATGACACAGAGGATGTGAGTGTACAGCTTTGGGTCCAGCCTGTCCTAGGAGACACTGATTTCCTCGAGTCTTCTGAACCAAAAAGTATCTGAGACAGGTCTCAGGACATTTAGAAAGTGTGTTTTGCTGGCCGGGCACGGTGGCTCACGCCTGTCATCCCAGCACTTTGGGAGGCCAAGGCGGGCAGATCACCTGACGTCAGGAGTTCAAGACCAGCCTGACCAACAAGGTGAAACCCTGTCTCTACTAAAAATACAGAAATTACCTGGGTGTGGTGGTGGGCGCCTGTAGTCCCAGCTACTTGGGAGGCTGAGATAGGAGAATTGCTTGAACCTGGGAAGCGGAGGTTGCAGTGAGCCGAGATTGCACCACTGCACTCCAGCCTGGGAGACAGAGCAAGACTCCGTCTCAAAAAAAAAAAAAAAAAAGTGTGTTTTGCTAAGGTTGAGGACGCGCCTGTGACCGAGCCTCAGGAGGTCCTGACGACCTGTGCCCTAGGTGGTCGGAGGACATCTTGGTATTATGCATTTTAAGGAAACGTCAGACATGAATCCATACGTGTAAGACGAACCTTGGTTCTGTCAAGCGCGTCGGTGCGAAGAGACCCCCGAACAGGCTTTGTGTGAGCGATAAAGCGGTTCATTCACTTGGGTGCAAGTGGGCTGAGTCCGAAGAGAGAGTCAGCGAAGGGAGATGGGGGAGGGGTGGCTCAATAGGAGTTGGGTAGGTAATGGAAAATTACAGCAAAAGGTGGTTATCTATTGTCAGCAGAGGAGGGATTGCAAGGTGCGTGGTGCACAGATCATAAGACTCATTGTCCAGAGGACGAACGGCACAAAGTCGATTGATCGGCTAAGGTAGGGCAGGGAGAACTCACGATAGTAAAATGTTGTAATTTTAGTTAACCAGTTAAGGCAGGAACTGGCTGTTTTACTTCTCTGTGGTTTTTCCTTGGCTGCTCCAGACTTCTTGGCTCCTGCAGGCCACCTGGACGTATATGTGCAAGTCACAGGGGTGATAATGGCTGAGCTTCGGCTCAGAGGCCTGACAGGTTCAATCGGTGAAGGTGGGACTGCTCCACTGGTGGTGAGGCGGGCTTCCAGGTCATAAGGTAGATTTTAAAATTTTCTGACTGGCAATTGGTTGAAAGAGTTATTATTAGGCCGGGCACGGTGGCTCACGCCTGTCATCCCAGCACTTTGGGAAGCCAAGGCGGGCGGATCACCTGAAGTCAGGAGTTCGAGACCAGCCTGGCCAACATGGTGAGACCCCCGTTGCTACCAAAAATACAAAAAATTAGCTGGGAATGGTGGCAAGTGCTTGTAATCCCAGCTGTGCTGGAGGCTGAGGCAGGCGAATAGCTTGAATCCAGGAGGCGGAGGCTGCAGTAAGCTGAGATCATGACACTGCACACCAGTCTGCGCAACAGAGCGAGACCCTGTCTCTGAAAAAAAAAAAAAGAAGAAAAAAAGAGTTATTAGTAGAAAGGAATATCTGCATTAAGATAAGAGGATGTGGAGACGAAGGTTTTTTGTTTTTGAACGGGAGTCTCACTCTGTCTCCCAGGCTGGAGTGCAATGGCGCGATCTCGGCTCACTGCAACCTCCGCCTCCCGGGTTCAAGCGATTCTCCTGCCTCAGCCTCCCAGTAGCTGGGACTACAGGCGCGCGCCAGCACGGCTAAATGATTTTTGTATTTTTACCAGTGATGGGGTTTTGCCATGTTGGCCAGGCCGGTTTCGAACTCCTGACCTCAGGTGATCCGCCCGCCTCGGCCTCCCAAAGTGTTGAAGTGCTCGAATTACAGGCGTGAGCCAGCGGGCCCCGCCCAGACCTGCATTTTAACCTCCCCTCCACCCCGCGGCCCCGGGACCCTGGGCATCCGGAGGCTCACAGCGGCCCTGCTGGGATGCTCCAGGCAGATCACTGCACAGCCCTGCAGGCAGAGGGGAGGCCGTGCAGGAGGAGGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAAGGGGGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGCAGAGGGGAAGACGTGCAGGGGGAGGGGAGGCCGTGCAGGAGGAGGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGCGGAGGGGGGTACGTGCAGGGGGCAGCGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAAGGGGGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGCGGAGGGGGGTACGTGCAGGGGGCAGCGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAAGGGGGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGCGGAGGGGAAGACGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGCGGAGGGGGGTACGTGCAGGGGGCAGCGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAAGGGGGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGGGCCGTGCAGGGGGAAGGGAGGCCGTGCAGGGGGAGGGGAGGCCGTGCAGGGGGAGGGGGGGCCGTGCAGGCGGAGGGGGGCCGTGCAGGGGGAGGGGGGGCCGTGCAGGCGGAGCGGGGGGCGTGCAGGGGGAGGGGAAGCCGTCCTGGGCCTTTTCCAGCTGGCTGCAGAGAAGGGGCCAGCTCCCTCCTGGGGACCCGGAGCCGCGGTACAGGTGTGGTTGCTTCTCTTGGAGAAAGAGGCTGAGCTGACATCCCCCGGGCTGATAAAGAATGGGCTCCTCCTCCTGGGCCCAGCAGGCTCCCGGGACCCTCCCTCCCTCCCTCCCTCCCTCCCTCCTTCCGGGCAGCAGGGAAGATCTGAGTTCATGTAGCTGGTGTTGGCTTAGGGTCTGGGAGGAAGGCTTTTGGGAAGATGTAAATAAGAACAAAATCTGCAGCCACCTGGGAAGCCTGGCCTCAGTGTGGAAGAGAAGGCAGCAGGATTATTACAGAACCTTGTGAAGCCAACGCGGGCAGCCGCCAGGAGCTGCAGACCGAGAGGATCTCGTCCTTTCTTGCGGCCCAGGGAGACCAGGCCTTTCATTCTGGGCTCGAGACCAACAATTCGAATTCCGAACTCCCCCTGCGTGTGGGACTCAAGGTGGGTTTGCAGTTTGCAGGCAGCTGAAGTTTGTCTCTTCTCCAGGAGGCCGGGGCTTCTTCCCTTCCTCTCTGTCCCATTTCTTTTTTCTTGAGACAGAGTCTCACTTTGTCACCCAGGCTGGAGTGCAATGGTGTGATTGTGGCTCACTACAGCCCCCGCCTCCCGGGTTCAAGCCTCAGCCTCCTGAGTAGCTGGGATTACAGGCGTGCGCCACCACGGCCGGCTACTTTTTGTACTTTTAGTAGAAATGGGGTTTCACCATGTTGGCCAGGCTGGTCTCGAACCCCTGACCTCAGGTGATCCACCCACCTCAGCCTCCCAAAGTGATGGGATGACAGGCGTGAGCCACCGTGCCCGGCCCCTCCAGGTCTCATTTCTAAGAGGAGGCCTCAGGTCCACCAGGAAACATTCCTCAGATGTGAAACTGTCAACAGGCTGATTTCTGGGCTCAAGATCAACAATTCTAATTGATTTGATTAAATCAATTAGATCTAATGATTTTAATCTAATCAGTTTTAATCTAAATGATTAAAAATCTTACATACATTGCCGGGCGTGGTGGCGGACGCCTGTAATCCCAGCTACTCTGGAGGCTGAGGCAGGAGAATTGCTTGAACCTGGGAGGCGGAGGTTGCAGTGAGCCGAGATTGCATCATTGCACTCCAGCCTGGGTAACAAGAGTGAAACCCTGTCTTTAAAAAAAACAAAACAAAACAAAAAAAAAACCGTACATACAGCTGGGCACCGTGGCTCACGCCAGTAATCCCAGCACTTTGGGAGGCCGAGGCAGGCAGATCACCTGAGGTCAGGAGTTCAAGACTAGCCTGACCAAGATAGTGAAACCCCGTCTCTACCAAAAATACAAAAATTAAGCAGGTGTGGTGGCGGGCGCCTGTAATCCCAGCTACTCTGGAGGCTGAGGCAGGAGAATTGCTTGAACCTGGGAGGCGGAGGTTGCAGTGAGCCGCGATCGCGCCATTGCAGTCCAGCCTGGGCAACGAGAGGGAAACTGTGTCAAAAAAAAAAAAAAAAGACCAACCAAAAAAGTTATATACACTTCAGAGGCAGAGAAAGAATTTACAAGTTGTCTAAAATGTCCTTATGGAAAGGGTCACTTCCCTTATTTTCAACAGTATATTATATATATATACTTATATATGTATATATAGTGATGTATATATGTATATATGTTATGTATGTGTTATATATGTCTATATTATATATGTATATATGTTATACATGTATGTTATATATATATTATATATATATTATATATGTATATATTATATGTATAATATATATTATATGTATATATTATATATGTTATATATATGTTATGTATATAATATGTATATATGTATATATTCTGTTATGTGTGTATGTGTGTGTGTGTGTGTGTGTGTAGGCGACACGGACACACGTGGAGTGGTTTTAAGGAGCGGAGAGTTTAATAGGAAAGAAGGGAGGTCCGGGCAGTGGCTCACGCCTGTAATCCCAGCACCGCGGAGGTTGCGGTGAGCCGAGATCGCGCCATTTCACTGCAGCCTGGGCAACAAGAGCGAAACTGCGTCTCAAAAAAAAAAAAACCAAGGCGAGAAGGCAGAAAGAAGTGGCTCCCCTGGACTGAGACAGAGGGACGGGGGCTCCAAACCCCAGGCAGGAGACCAGCCCGTGTTATACGGTGCCTGGAGGAGGCGTGACTCATTTGCATAGCGCTGAGGGGATTGGTCTGACCAGGCCTGTCATTCACGTAGCCCGCGAAAAACCTGGCCCGCCCACCCCAGTTCCGTAATATGCAAATGTAGGGCGCCATGATGTTCCACACGCCTGAGGGTAGTGGGGGCGGCCGTGGTGTCAGGCCCGGGTGGGGGCGGCCTTGGTGTCAGGCCCGGGTGGGGGCGGCCGTGGTGCCAGGCCCGGGTGGGGGCGGCCGTGTTGCCAGGCCCGGGTGGGGGCGGCCTTGGTGTCAGGCCCGGGTGGGGGCGGCCTTGGTGTCAGGCACGGGTGGGGGCGAGGGCAAGAGGGCAACGGTGGGAATCGCCATGTGGGCTGGACCAGCTAAAGGCTCGCATTTGCATATTAAAGGTTGCCAAGCCGGGTCTAAGAGCCAGGGCTTTCACGCTAGACAAGAAACATTTTTTGGAGCTGCAAAAAATGCTTCCAAGGACCCCTTTTCCTCTCTCTCTCTCTCTTTTTTTTTTTTCTTTTTTGGATATGGAGTTTCACTCTTGTTGCCCAGCCTGGAGTGCAGTGGCGGGATCTCCGCTCACTGTAACCTCCACCTCCCGGGTTCAAGCGATTCTCCTGCCTCAGCCTCCCGAGTAGCTGGGATGACAGGTGCCACAGGTGCCCACCACCACGCCCAGCTAATTTTTGTATTTTTAGTAGAGATGGGGTTTTGTCAAGTTGGCCAGGCTGGTCTCGAACTCCTGACCTGAAGTCACCGTAAAAAACCTCTTTTCCTCTTCTCCTTCCTCAGGTTGCCCAGGGCTCACCTCTGATGGGTGGGCAGGTGAGCGCTTCCAACAGCTTCTCGAGGCTGCACTGCAGAAATGCCAACGAGGACTGGATGTCGGCACTGTGTCCCCGGCTCTGGGATGTGCCCCTCCACCACCTCTCCATCCCAGGTGAGGTTGGGGTGGGGCAGGGGCCGTTGCCTCTATCCCAGGTGACGGCAGGGTGGGGCGGGAGCTGTGGCGTCTGCATTCCCCAGTGGGGACGCTGGCTGTAGGAGCAATCCTGGGTGTAGGGAAATCCTAGAAAGCACACTGATGTGGACACACACATACACACAGTGCACACGTGTGTGCATACACATATGTACATAGTCATGGACATGCACAGACATGCATACACACAGGCATGCACACATGTGCACACATACACAGGCATACATGCACACACGCACACACGCACACACGCACACATGCACATCTGCACACGCACATCTGCACACACACATGCACATCTGCACACACACATGCACATCTGCACACATACGCATGTGCATACTGTGTTGGTCTGTTCTCACGCTGCTAACAAAGACATACCCGAGACTGGGTAATTTATAAAAGAGGTTTAATGGACTCAGTTCCACCTGGCTGGGGAGGCCTCACAATCACGGCAGAAGGTGAATGCGGAGCAAAGTCACATGTTACATGGTGGCAGCCAACAGAGCGTGTGCTGGAGAACTGCCCTTTGTACAACCATCAGATCTCGTGAGACTTATTCACGATCACGAGAACAGCATGGGAAAGACCCGCCCCGTGATTCGGTGACCTCCCACCAGGTCCCTCCCATGACAGATGGGAATTATGGGAGCTACAATTCAAGATGAGATTTGGGTGGGGACACAGCCGAGCCATATCACATACATAGGTGCACATAGGCACACATGCAGGCACACACAGACACATACATACACACACACATGCATGCGCACACACATACATGCATGCACACATGCACATCCCCACACATATGCACATGGATGCATATACATGCACACACACAGGTGTACACACATGCAGGCACATGTATACATGGATGTAGGCACATACTAATGCACACATGTATACATGCACATAGGCTCATACACACATGGATGCACATACACATGCATGCACATGTGCGGGTGTGTACACATGCACATGCACACGTGTACACATGTACACACATGCACACATGTATATATATATTTGCACCTATGCACACATATATACACCTGCAGATATACACAGGTGTAGACATGTACATGCACAGACACACGTGCACACATAAACATTTGCACCTATGCACGCAGAGACACGTCTATGCAATGCATGTATACACGTGTACACACGTACATGCATGCACACAGACATACACATGTACACATTTGCACCTATTCACATAGACATACATGAATGCACATATGCACACGTGTACACAGGCACACATGCACATGCACACGCGTGTACACACATGCACACACGTAGACACACGTCCATGCACACAGGAACACAGGTACATGTTTAAACACAGGCACACACATGCACACTCACATATAGGCATACGGACACACATACACATGCACACAGATACGTATTGTCAACCTAAGGAAATAAACTTAGACAAAATTAATATAAGTAGGGGGTTTCCTTGAGCCACATTTGAGGACTGCAGCCCAGGAAACCCTCCAACTCGCCTTAGGAAGTGGCTGTGGAGAACAACGTCGAGACGGGAGCTTCTAAAGAAAGTGCACATCAGGAGAGGGGGTGATGATGAAAGCTGTTTTTCAGGAATTCATGTGGGTTACTGAAGTGGCATCGAGCACTGATCGCGTTCTTCCTTGCAATGTAGGGAATGAGTTATGGTGCCCCAGTGTGACATCCTGAGGTTAATTTTTTTTTTTTGAGACGGAGTTTTGCTCTTATCGCCCAGGCTCGAGTGCAGTGGCTCCACCTCAGCTCATCGCAACCTCTGCCTCCTGGGTTCAAGCGATTCTCCTGCCTCAGCCTCCCGAGTAGCTGGGATTACAGGCACGCTCCACTATGCCTGGCTGATTTTTGTATTTTTAGCAGAGATGGGGTTTCACCATGTTGGTCAAGCTGGTCTCGAACTCCCGACCTCAGGCAATCCACCTGCCTCGGCCTCCCAAAGTGCTGGCATTGCAGACATGAGCTATTGCACCCGACATCTTAGGTTAATTTGTAGAGATGCGGGGCATCTGTCAGTCTAGAGCTGACCTAGTAAGTAGCTTCCAGGGGTGATACTGTAGCAGGACCAGCCGCAGACAAAACTCAGACACCGGATTAAAGAAAGAAGAGGTTTCTTTGGCCGGGAGCTTCGGCAGACTCACATCTTAAGAGCCGAGCTCCTTAAAAAAGAAATTCTTGGCCTTTTTAAAGGCTTACAACTCTGAGGGGTCCACGTGAAGGGGTCGTGATAAATCAAGCAAGTGTGGGGAACGTGACTGGGGGCTACATGTGTCAGCTAACAGAACAGAAAGTTTTGTAACGCTTTTTCATACAACGTCTGGCATTTACAGATAACAGAAGTGGTTTAGGTTATGGATTGATATTATTTTAACTCCCAGGGCTGGGTGGTGGTGCCAAGGTTGTCTGGCTATTTATCTTACTTCTGTTTCTTTCCAACCTTTTGCTTTCTCCTGTCTTATAAACTAGGCAAGGTGGGGGTAGGGGGCAGCAGGAGAAGTACTGGTCTCCTTCCTTAACACCTTAGCTCAAGATCGGGGGAGCAGGTGACTGTGGCTTCGTTCCAATGCCTCTCGGGGTCTGGGGATTTAAAGGGGGTCCACGTTCCTCAGAGGATGTAAAGGGGCTTCACGTTCCTCAGGGGATTTAAAGGGGGAAGGCCGGGCGTGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAAGCCAAGGCAGGAGGATCACTTGAGTTTAGGAGTTTGAGAGCAGCCTGGGCAACATAGTGAGGCCCCATCTCTGCAAATATGTATATACACACACACATTTATATGTAAGTGTACATATTTATATATAAACATACATATTTATATTTATATATAATATATAAATAAGTAAATGTAAAATATAAAATATATATCATATATTTATATAAATATATGATACATAAGTACATTTATATATTATATTTATAAACATAATATGTGGATATATATTTTATATATTTATATAAATACATATTTATGCAAAAATATGTATTTATGTAAATATATACTAATATATGTTTATATATAGATATATATACACTATATATGTTTATATATAGAATATATACTATATATGTTTATATATAGATATAGATACTATATATGTTTATATATAGATATAGATACTATATATGTTTATATATAGATATAGATACTATATATGTTTATATATAGATATAGATACTATATATGTTTATATATAGATATAGATACTATATATGTTTATATATAGATATAGATACTATATATGTTTATGGATATAGATACTATATATCTTTGTTTATAGATATAGATACTATATATGTTTATATATAGATATATGTCATATATATCTTAAATATATATATCTTAAATATAGATATATTTATATCTATATTTAAGAAATAACAACTACGTGTCATAGGCAGGAAATGCAAACGTCAGCCATCAGTCAAACTCTACAAAGGTCTGTGTTTCTTGCGGTTACCATAACAAGTGAGCACACGTCAGGAGGCGGCAAAGAACAGAAATTTACTCTCTCCCAGTTCTAGATACAGAAATCTGAAGTCAAGATATGGGCAGGACCACACGTCCTCCTGAGGCTCTAGGGGAGGGTCCTTCCTGCCTCTCCCAGCTCCTGGGGGCTCCAGGCATCCCTGGGCTTGTGGCCGCATCACTCCAGTCTCTGCCTCCATCTCCACGTGGCCTCCTCCTCTGGGTCTGTGTCTCCTAAGGACACCTGTCATTGCATTTAGGACCCAGCACAAAGCCAAGATGACTTCATCTTGAGCATTTTGAGAGCATGTGTAAAGACCCTATTTCCAAACAGGATCCCATTCACAGGTTCTGGGCAGGGGGTTAGGACTTGAACAGCTCTTTTGGGGATCACCACTCAAGTCATTGAAATTGTATTCAGTTCCTTCTAGAGGCTCTAGAGTGGGGGATCCTTCCTGCCTCTCCCAGCTCCTGGGGGCTCCAGGCATCCCTGGGCTTGTGGCCGCATCACTCCAGTCTCTGCCTCCGTCTCCACGAGGCCTCCTCCTCTGTGTCTGTCTCCTCCTCTTGTGTCTTAGACGGACACCTGTCACTGGATTTGGGGGCCCGCCCTACTCCAGGATGATCTCATTTCAACCTAATGATATCTGCAGAGACCCTGTTTCAACACGGGTCGTGTTCCCAGGTTCCAGTGGACGTGAGTTTTGGGGGTCAGCGTGCACCCCTCCCGCCATACCTGTGCCTGTGCTGTGGGCGGGCAGCAGCCTGTGCTGTAGGCGGGCTGTGGAGCGACTCACAGCAGGTGGCGGGGACGGACTCGTGGTGACATGTCCGCGTGTGTGCTTTGCTCTCAGGGAGCCACGACACGATGACGTACTGCCTGAACAAGAAGTCCCCCATTTCGCACGAGGAGTCCCGGCTGCTGCAGCTGCTGAACAAGGCCTTGCCCTGCATCACGCGCCCTGTCGTGCTGAAATGGTCCGTCACCCAGGTACGGTCTGTGCCCCGTGCTGCTGACCTGGCCTGTCAGCTATGTGGGGCCCACGGCCCCGTGGTGCTGAAATGGCCCCTCACCCAGGTAGGGTTTGAGTGGTGCCCTGTGGGCTCAGGAGGCAGGTTCCTATCCCAGCTGCGGAGACAGGATTAAAACAAAACCTGCTGCCCACCCAGAACCCCTCCCCAGAGGTGGAAGAGAGGGGAACAGTGTTTTTATTTATTTATTTTTTGAGACAGGGTCTCACTCTTCTTACCCGGGCTGGAGTGCAGTGGCGTGATCTCGGCTCACTGCAACCTCCGCTGCCTGGGTTCAAGCGATTCTCCTGCCTCATCCTCCTAAGTACCTGGGTCTACAGGCACCTGTCACCACACCTGGCTAATTTTTTGTATTTTTAGTAGAGATGGGGTTTTACCGTGTTAGTCAGGATGGTCTTGATCTCCTGACCTCATGATCTGCCCGCCCCAGCCTCCGAAAGTGCTGGGATTACAGGCGTGAGCCACCGCGCCCGGCCCAGCATTTTATTAAATGGCGTAAAGCTAATGCCGTGAGCATCGCAGGCCTCCACTGAGAGCTGCAGAGGGAGAGGGTCTCGCCCTGTTGCATCCCAGCAGAGACAACACCTTTCTTTTTCTTTCTTTTTCTTTTTTTTTTTTTTGAGACGGAGTCTCACTGCCGCCCAGGCTGGAGTGCAGTTGGTGCCATCTCGGCTCACTGCAAGCTCCGCCTCCCGGGTTCACGCCATTCTCCTGTCTCAGCCTCCTGAGTAGCTGGGACTACAGGCTCCCGCGACCACGCCCGGCTAATTTTTGGTATTTTGAGTAGAGTCAGGGTTTCACTGTGTTAGCCAGGATGGTCTCGAACTCCTGACCTCGTGATCCACCCGCCTCAGCCTCCCAAAGTGCTGGGATTACAGGCGTCAGCCACCGCGCCCGGCCGAGACAACCCCTTTCATGCCTGCACTCAAGACAGACAAGGACTCATTTCTCGTGTCTTTAGGACCTGAGGCGGGTCTGCAGTTTGCAGTCAGGCATCTGCTAGTCCCTGGGAAACAGGGAGACAGGCCCCTTTCTCCCTAATAATCACATTCATTCATTCCTTTAGAGATGGAGTCTCGCTCTCTCACCCAGACTGGAGTGCGGTGGTGCGATCTCAGCTTCCTGCAGCCTGGGCCTCCCAGGATCAAAGGATCCTCCTTCCTCAGCCTCCCGGGCAGCTGGGACTACAGGTGTACACCACCACACCCAGGCTGATTTTTAAAATTTTTAGTAGAGGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTTGGGAGGCCAAGGTGGGTGGATCACGAGGTCAGGAGATCGAGACCGTCCTGGCTAACATGTTGAAACCACATCTCTACTAAAAATACAAAACAAAATTAGCTGGGCGCGGTGGCGGGCGCCTGCAGTCCCAGCTACTGGGGAGGCTGAGGCAGGAGAACGGCATGAACCCGGGAGGCGGAGCTTGCAGTGAGCCCAGATTGCACCACTGCACTCCAGCCTGGGTGACAGAGCGAGACTCCGTCTCAAAAAAAAAAAAAAAAGGCCAGGTCCCCGGAGATGAGGTTTTCCAAATGCAGGTCCCCGTGGCTGCAGCGCTCCCAGCACATACAAACAGCTGTTGTTACGACATCCACGTCCCAGTGGGCAGCAGGACATGCGGGTGGGCCAACCCCACAGCCCATTCCTGAGCCCCCCAGACGCGGCGCTCAGCCAGGCAGACATGACAGCAGCCTCTGTCCACAGGCACTGGACGTCACAGAGCAGCTGGATGCCGGGGTGCGGTACCTGGACCTGCGGATAGCCCACATGCTGGAGGGCTCGGAGAAGAACCTGCACTTTGTCCATATGGTGTACACAACGGCGCTGGTGGAGGTGCGGCCGGGCTGAGGTGGGACGCAATGGGGAGAGTGGGAGGCGGCCGGGCACTGGTGCAGGTGCGGCCGGGCTGAGGTGGGAAGCAAGGGGGACAGCGGGAGGCGGCCGGGCACTGGTGCAGGTGCGGCCGGGCTGAGGTGGGAAGCAAGGGGGACAGCGGGAGGCGGCCGGGCGCTGGTGCAGGTGCGGCCGGGCTGAGGTGGGAAGCAAGGGGGACGGCGGGAGGTGGCCAAGCTCCCGTGGGGATGAAACAGCCACATGCAGATGTGGACAGGAAACGCCCGGTCTTTAATGGAAGGGTGACGTCACCTATACACCAGACAGGAGACACTGACCCCGCCAATCCGTTACGGAGATTTCTTTTTTTTTTGCTTTTTTTTTTTGGAGATGGAGTCTTGCTGTGTCGCCCAGGCTGGAGTGCAGTGGTGCAATCTCAGCTCACTGCAACCTCTGCCTCCTGGGTTCAGGCAATTCTCCTGCCTCAGCCTTCCAAGTAGCTGGGATTACAGACGCCGGACACCACGCCCAGCTAATTTTTGTATTTTTAGTAGATACGGGGTTTCACCATGTTGGCTAGGCTGGTCTCAAACTCCTAACCTCAGGTGATCCACCCGCCTCGGCCTCCCAAATTGCTGGGATGACAGGCGTGAGCCGCCACACCCCGCCTTCCCTGTGGTGTTGGAGTCGTGCAGGACTCAGCCCAGCACCCCCCTCCCCAGGACACACTCACGGAAATCTCGGAGTGGCTGGAGCGGCATCCACGCGAGGTGGTCATCCTGGCCTGCAGAAACTTCGAGGGGCTGAGCGAGGACCTGCACGAGTACCTGGTCGCCTGTATCAAGAACATCTTCGGGGACATGCTGTGTCCTCGTGGGGTGAGGAGGGGAAGGATATCCGCACGTCTCTCCCGGGGCAGGGGCATCGTCAGCCTCAGACTCCATTTGCTGTGCCCTGGGTGTGGGTGCTGCCATGATTCCTGTAGCAGGTGAAGCCGTCGAACGGGGGCTGCCTGCTCTCCCGCAGTGTGGGGGGCCCTGGCTGACCCGGTGGGGTGGCTCCTGGTGAGATCTGCTTCCCTTGACGGGTTTAGAAATGTGTGCAGCGTCAGCCGGGCGCGGTGGCTCACGCCTGTCATCCCAGCACTTTGGGAGGCCGAGGCGGGTGGATCACGAGGTCAAGAGATCGAGACTATCCTGGCCAACATGGTGAAACCTGGTGTCTACTAAAAATACAACAATTAGGCTGGGTGTGGTGGCTCACGCTTGTCATCCCAGGACTTTGGGAGGCCGAGGCGGGCGGATCACGAGGTCAAGAGATTGAGACTATCCTGGCCAACATGGTGAAACCCCGTCTCTACTAAAAATACCAAAATTATCTGGGTGTGGCGGTGGGTGTGCCGGACGCAGTGGCTCACACCTGTCATCCCAGGACTTTGGGAGGCCGAGGCGGGCGGATCATGAGGTCAGGACATCGAGACCATCCTGGCTAACACGGTGAAACCCCGTCTCTACTAACACAAAATACAAACAATTAGCCGGGCGTGGTGGCGGGCGCCTGTAGTCCCAGCTACTCGGGAGGCTGAGGCAGGAGAATGGTGTGAACCCGGGGGGTGGAGGTTGCAGTGAGCCGAGATCGCGCCACTGCATTCCAGCCTGGGAGACAGAGCGAGATCCGTCTCAAAAAATAAAAAATAAAAATAAATAAATATATAAAAATAGAGACAGGGTCACCCTGTGCAGCCCAGGCTCGAATTCCTGGCCTCGAGTGATCCTCCCGCCGTGTCCTCCCAAAGTGCTGGGATTACAGGCATGAGCCCCTGCACCTGGCCATACTTAATTTATTTATTTATTTGAGAGGGAGTCTCGGTCTGTCTCCCAGGCTGGAGTGCAATAGCGAAACCTCGGCTCACCGCAACCTCTGCCTCCCAGGTTCAAACGATTCTCCTACCTCAGCCTTCTGACTAGCCGGGATGACAGGCGTGCACCACCGCACCCGGCCAATTTTTGTATTTTTAGTAGAGATGGGGTTTCACCATGTTGCCCGGGCTGGTCTCAAACTCCTGACCTCAGGTGATCCACCCACCTCGGCCTCCCAAAGTGCTGGGATTACAGGCGTCAGCCACTGCGCCCGGCCAGAATTTCATTTTTGGTTTATACTCGTGTTGGGCCGGTGTCCCGACTTCCCAGCCCTCCGCTCTCCCAGGTGCCCCCGGCTCTCCTCTCTCCCCTGCACCCCTTAACTCTGGTCCTTTGCAGGAGGTGCCGACACTGCGGCAGCTGTGGTCCCGGGGCCAACAGGTCATCGTCTCCTATGAAGACGAGAGCTCCTTGCGCCGGCACCACGAGCTGTGGCCAGGAGTCCCCTACTGGTGGGGAAACAGGGTGAAGACCGAGGCCCTCATCCGATACCTGGAGACCATGAAGAGCTGCGGCCGCCCAGGTACCAGGTCGCCCCTCGTGGGGGTAGATTCCACACAGCCTCCCGTGACGCCCTGCGGCAGGCCGGGTCCACATGGACTTGCCTTCACTTTTACGTGAAAACAATTTAAAAGGAATCCATGAGCTGGGCGTGGTAATCCCTGTACCTGTAATCCCAGCACTTCGGGAGGCCGAGGCGGGTGGATCACCTGAGGTCGGGAGTTTGAGACCAGCCTGGCCAACATAGTGAGACCCCAACTTTACTAGAAATAAAACTTAGCGGCCGGGCGCAGTGGTTCATGCCTGTCATCCTAGCACTTTGGGAGGCTGAGGCGGGCAGATCACCTGAGGTCGGGAGTTCGAGACCGGCCTGACCAATGTGATGAAACCCTGTCTCTACTTAAGAAGCACCCAGGGAGAAAGCAGTCCATGTACATTGGCGGGGGGAGGGATCAACAAGGTGTGGTCCATCCACGCGGTGGAATATTACACAGCCATGAAAAAGAACGAGGCTCTGACAAGGATGCAGCGGGCACAAACCTTAAGACATCACGCTCAGTGAGAGAAGCCAGACACAAAAGGACACGTAGTGTGTGAATCCATTTACAGGAAATGCCCAGAACATGCCAATCCAGAGACAGAAAGAGGATTTGTGGTTGCCGGGGGCTGCGGAGGGGAAATGAGGACTGACTGCTTCATGGAAACAGGGTCTCTCCTTTTAGGACGATGAGAATGTTCTGGAACTAGGGAGAGGTCGGAGTTGCACAACGTGAATCCACTTTATTTTTTTTAGTTAATTCTTTGATTAGAGAAGGGGTCTCACTGTGTTGGCCAGGCTGGTCTCAAACTCCTGGTGTCAGCCAGGTGCGGTGGCTCACACCTGTGATCACAGCACTTTGGGAGGCCAAGGTGGGTGGATCACCTGAGGTCAGGAGTTTGGAGACCAGCCTGGCCAACATGGCGAAACCTCTTCTCTAGCAAAAATACAAAAATTAGCGGGCACAGGCCGGGCGCGGTGGCTCACGCCTGTAATCCCAGCACTTCGGGAGGCCGAGGCGGGCGGATCATGAGGTCAGGAGATCGAGACCATCCCGGCTAACATGGAGAAACCCCGTCTCTACTAAAAATACAAAAAATTAGCCGGGCGTGGTGGCGGGCGCCTGTAATCCCAGCTACTCCGGAGGCTGAGGTAGGAGAATGGTGTGAACTCGGGAGGCGGAGCTTGCAGTGAGCCGAGATCACGCCACTGAACTCCAGCCTGGGCGACAGAGTGGAACTCTGTCTCAAAAAAAAAAAAAAAATAGGCACCTGTAATCCCATCTACTTGGGAGGCTGAGGCAGGAGAAATGCTTGAATCCAGGAGGCGGAGGTTGCTGTGATCCATGGTCGCGCCACTGCACTCCAGCCTGGGCGACAGGAGCAAGACTCCATCTCAAAACAAAACAAAAAAGAGAAAAATTAGCCAGGCATGGTGATGCGCGCCTATAATCCCAGCTACTCAGGAGGCTGAGGCAGGGGAATCACTTGAACCAGGAAGGCGGAGGTTGCAGTGGGCCGAGATCGAGCCAGTGTACTCCAGCCTGGGCAACAGAGCGAGACTCTGTCTCAAAACAAAACAAGACAAAATCAAACTTCTGGGGTCAAGCGATCTGCTTGAACCACCATTCCCAGCCGAGTTGTGCAATTTAAAATCGTGAATTTCGGTGCAGTGGCTCACGCCTGTAATCCCACCACTTTGGGAGGCCGAGGCAGGTGGATTAATTGAGATCAGGAGTTTGCGACCAGTCTGGTGAAACCCCATCTCTAGTAAAAATACAAAAAGATTTAGCTGGGCGTGGTTGTGTGCACCTGTAATCCCAGCTCCTCGGGAGGCTGAGGCAGGAGAATTGCTTGAACCCGGGGGCGGAGGCTGCCGTGAGCCGAAATCGCGCCACAGCACTCCAGCCTGGGCAACAGAGCGAGACTCCATCTTGGGAAAAAAAAAAAAAGGTAACTTTTTTGTACGTGAATTTCACCACAATTTTTGTAAAAAAGCCACCGACGGGGTGTGAGGTGCAGACAGCGTCGGCAGCCACGGCCCCGTGTCCTCCGGAGGCAGGAGCCTGAGGGAGGGAGGGAGGAAGGTCCTCCCCGCGGGGACGGTGGCAGGTGGGGCCGTCTCGGTCCTGCAGCCTGCGGCTGGGTTCTCTCAAGGTGATCTTCACGGCCGCGAGGGCTGCTTCCCACAGGGGCAGCATGAAACCCAGTCACGGGCCGGGCAAAGGAGCAGGTTTTTTCAACTTGGTCTCTTGCCCTCACACAGGAACGAGGTTTAGAGACTTCAGAAATGTCTTTTTTTTTTTTTTGAGGTGGAGTCTCACTCTTGTTGCCCCGGTCGGAGTGCAGTGGCGCGATCTCGGCTCACTGCAACCTCCGTCTCCCGGGTTCAAGCCATTCTCCTGCCTCAGCCTCCTGAGTAGCTGGGACTACAGGCGCCCGCCACCACACCCGGCTAATTTTTTTTTGTATTTTTAGTAGAGACAGGGTTTCACCATGTTGGTCGGGCTGGTCTCGAACTCCTGACCTCATGATCTGCCCGTCTCAGTCTCCCAAAGTGCTGGGATGACAGGCGTGAGCCACGGTGCCAGGCGGAAAATTTTTTTGTTTGTGTGTTTGTTTTTTGAGACAGAGTTTTGCTCTTGTTGCCCAGGCTAGAGTGCAATGGCGCAATCTTGGCTCACTGCAGCCTTCGCCTCCTGGGTTCGAGCAATTCTCCCGCCTCAGCCTCCCACCACGCCCGGCTAATTTTTATTTTTAGTAGAGATGGGGTTTCTCCATGTTGATCAGGCTGGTCTCGAACTCCCGACCTCAGGTGATCTGCCCGCCTTGGCCTCCCAAAGTGGTGGGATTACAGGCTTGAGCCACTGTGCCCGGCCTTTTTTTGTTTGTTTTGTTTTGTTTTTGAGACAGAGTCTTGCTCTGTCACCCAGGCTGGAGTGCAATGGCGTGATCTCGGCTCACTGCAACCTCCACCTCCTGGATTCAAGTGATTCTCCTGCCTCAGCCTCCCGAGTAGCTGGGATTACGGGCACGTACCACCATGCTGAGCTAATTTTTGGATGTGTTTTTACTAGAGAAAGGGTTTCAGCGTGTTGGTCAGGCTGGTCTTGAACTCCTGACCTCATGATCCACCGGCCTCAACCTCTCAACGTGCTGGGATGACAGGCATGAGCCACCGTGCCCAGCCTAGAAATACGTGTTAAAAACCACTGAGAGAACTTGGCCATAAACGTCTGTTGCCTTTGCCGTCTCTGGCTGTGGAATCAGTCCAGCTGGTCAACACAGGGGCACTGGAACCTACCTCTGGGGGAGCTTCTTCAAATATGGCTTGCAGGAGATTCCGGCTCAGCAGATGTAGGTGGAGCCCCCAAATTTGCATTTCTAACTATTGCAGGGACCCCACTTTGAGAATCACTGGTCAACGTCAACCCTCTCTATAAGCCTCATAAGAGATGGCACAGACTTAGTGCCCAAGACAACAGCATTCTTCCTGTCTATCACATGGGGGATAAGAATGTGGACAAGTTTGGGGCCATATTATTCTGTCTCCCACATGGGATTAGGACGTGGACATCTTTGGGGCCATTATCCTGTCTACCTCATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATCCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATCAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATCAGGACGTGGACATCTTTGGGGACATTATCCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGCTGTTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGCTGTTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGCTGTTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTATCACATGGGGATTACGACGTGGACATCTTTGGGGACATTATTCTGTCTCCCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATCAGGACGTGGACATCTTTGGGGCCATTATCCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGACATTATTCTGTCTATCACATGGGGATTAGGACGTGGACATCTTTGGGGCCATTATTCTGTCTATCACATGGGGATTAGGATGTGGACATCTTTGGGGACATTATTCTGTCTCCCACACGGTGTTACGACGTGAGCATCTTTGGGGTTGTCTACTGCCCACCACGCTTTATAAGCAAAGCTCACCCAATTTCCTTGTTGGACATGGTGCTTTCAACTCTTAATTCCTGAGATGCGAACCTCTAATAATGTGACTAGGAGGGAGAAACAGGCGGGTGAGGCCCGTGACCGTGTAACCTCTCCCCACCCTCACCGTTGCAGGAGGGTTGTTCGTGGCCGGCATCAACCTCACGGAGAACCTGCAGTACGTTCTGGCGCACCCGTCCGAGTCCCTGGAGAAGATGACGCTGCCCAACCTTCCGCGGCTGAGCGCGTGGGTCCGAGAGCAGTGCCCGGGGCCGGGTTCACGGTGCACCAACATCATCGCGGGGGACTTCATCGGCGCAGACGGCTTCGTCAGTGACGTCATCGCGCTCAATCAGAAGCTGCTGTGGTGCTGACGGGACCCTTCTGAAGTTCGGGACGCGGCGGCTGCAGTTTCACCCCCGAATTTCCAAGTATTGTGACTTTGTTTGGGCCAAATGTTGGTGATCATAGGACCGATGATAATACGTTTTCATTTTCTTTAAAATAGAGATGGGGTGGCTGGGCGTGGTGACTTCGCCTGTCTTCCCAGCACTTTGGGAGGCCGAGGTGGGTGGATCATGAGGTCAGGAGCTTGAGAGCAGCCTGACCAACATGGTGAAATCCCATCTCTACTAAAAATACAAAACTTAGCTGGGTGTGTGGCAGGCGCCTGTAGTCCCAGTTACTCGGGAGGCTCAGGCAGGAGAACTGCTTGAAGCCGGGAGATGGAGGTTGCATTGAGCTGACATCGTGCCACTGCACTCCAGTCTGAATGATAGACCGAGACTCCATCTCAAAAGAAAAAAAAACAGCCGAGTGTGCAGTGACTCACGCCTGTCATCCCAGCACTTTGGGAGGCGAAGGCGGGTGGAACATGAGGTCAGGAGTTCGAGACCAGCCTGACCAACATGGTGAAACCCCGTCTCTATTAAAAACACAAAAACTACCTGGGTGCGTGATGGGCACCTGTAGTGCCAGCTACTCAGGAGGCTGAGGCAGGAGAATGGCGTGAACCCGGGAGGTGGAGGTTGCATTGAGCTGAGATCGTGCCACTGCACTCCAGCCTGGGCGACAGAGCGAGACTCCATCTCAAAAAAAAAAAAAAAAAAAAAGATGGGGTCTCTCTATGTTGGCCAGGTTGGTCTTGAACTCCTGGCCTCAAGTGATCCTCCCACCTCAGCCTCCCAGAGTGCTGGGATGACAGTCAAGAACCACCATGGCAGCCCATAATATGTTTTCTTATTTCTGTATTCTCCTTGCTGTGGCGTCTGGAGCCCTTACAGACCCAGGGAGACACTATCCTCCCACAGCTCACTAATTACTAAACACAGTGACAGCCCACTTAGGAGCCGGCCTCCCCTGTCAGCCAACCCCTCAGCTAGTTCTCACACCAAGCCTATAGATATATATGTGTGTGTATATATGTGTGTTTATGTGTCTGTGTGTATATATGTGTATATATCGGTGTGTATATATGTATGTATGTTTATACATGTGTATATGTGTGTGTGTGTGTGTATATGTGTGTATGTGTGTATATATGTATATGTGTGCATATGTGTATACGTGTATGCATACATGTATATGTGTATGCATGTATATGTGTATGTGTACATGTATATGTGTTTATACATGTATATGTGTGTATGCGTGTATACGTGTATGTATACATGTATATGTGTGTATGCGTGTATATACACACGTATACATATATACGTGCGTGTGTATGTGTATATATATATATGTGTATATATATATTTTTTGAGGAGTCTCACTCTGTCACCCAGGCTGGAGTGCAACGGCGAGATCTCGGCTCACCGCAACCTCCGCCTCCCTGGTTCAAGCAATTCTCCTGCCTCCGCCTCCCGAGTAGCTGGGATGACAGGCATGTGCCACCACACCCGACTAATTTCATATATTTAGTAGAGACGGGGTTTCTCCGCGTTGGTCAGGCCGTTCTCAAACTTCTGACCTCAGGTGATCTGCCCGCCTCGACCTCCCAAAGTGCTGGGATGACAGGCATGAGCCACTGTGCCCAGCCGCCGATATTTCTTTAAATTATGTTTAGGGACAGGGTCTTTTTCTGTCACCCAGGCTGGAGGGCAGTGGTACAGTCATAGCTCACTGCAGCCTCAACCTCCTGGGCTCAAGCGATCCTCTCAGCTCAGCCTCCCGTGTAGCTGGGGCTCCAGGGACACACCCCCACTGCTGGCTAATTTTTGTATTTTTGGTAGAGTCAGGGTTTCACCACATGGCACAGTCTGGTCTCAAATTCCTGGGCTCCAGTGATCCTCCCACCTTAGCTTCCAGAGTGGCCAGGATCACAGGCAGGCACCACCATGCCCAGGTAATTTTATTTTTTTGTAGAGACGTGGTCTGGCTATGTTGTCCAGGGTGGTCTCAAACTCCTGGGCTCAACTGATCCTCCCACCTCAACCTCTGCCATAGCCAGGACCTCAGGTGTCAGCCACCACACCCACAGCTAATTTTTTTTGTAGAGATGGGGTCTGGCTCTGTTGCTCAGGCTGGTGTGTAGTAGGGGCACAGTCATAGCTCACTGTAACCTTCAACGCCTGGGCTGAAGCAATTCTCCCGCCTCAGCTTCCCAAGTAACTGGGAGTATAGGTGTACACCACCATGCCCAGCTAATTATTTAGTAGTAGTAGGAGGAGTATTATGTTTGAGATGGAGTCTCGCTCTGTCGCCCAGGCTGGAGTGCAGTGGCGCAGTCTCAGCTCACTGCAACCTCTGCCTCCCAGGTTCAAGCAATTCTTGTGCCTCAGCCTCCTGAGTAGCTGGGATTACAGGCGCCCGCCACCGCGCCTGGCTAACTTTTGTATTTTTAGCAGAGATGGGGTTTCACCATGTTGCCCAGGCTGGTCTTGAACTCCCGACCTCAGGTGATCCATCCGCATTGGCCTCCCAAAGTGCTGGGATCACAGGCGTGAGCCACCGCACCTGGCCTCAAGCCAGTATTTCCCTGGCCCTAAATCATTCCTGGCTGGGTCCCAGCCCAGTAGAGCCAGCCCCCCAGCCCGGAGTGCTACTGAAGTGTTCAAAAGTTGTCAATCCTCAGCCGTTCCCTAGTCCTGTTGCCCGGTTCTGCCGAAGCCCCTTGAAGGCTGTGGCCTGGGCTGTTCCCTCATTCATTCCTGCCTCCCGAGCCAAACCCAGGTATCCGCTTGTGCCCTGCGTGGTGTGGCAGCGTCTTCTCTCGGGAAGGGTCAGGAGTAATTTCTTCTTTCAGTGGCCTCTCTGTGCTAGTCCCGGTCACCTCCGTGAATTAAAGTCCTACAGGTACAAGGGAGACCCCCCCCCCACGGAAGGCGCCCCCAGTCCGTGTGGGAGACTCGCACACCGGTTTTCTGCACAGGTTTCTTTCTGCCTCTGAAGCGTGAACGGTCCTAGTTTCAGACGCAGATCCTGCAAATACTTTTTTTTGTTTTTTTGAGATGGATTTTCCCTCTTGTTGTTCAGGCTGGAGTGCAATGGCACGATCTCAGCTCACTGCAACCTCTGCCTCCCGGGTTCAAGTGATTCTCCTGCCTCAGCCTCCCGAGGAGCTGAGATTACAGGCGCGTGCCACCGTGCCTGGTTAATTTTGTATTTGTATTTTTATTTATGTTTTGAGACGGAGTTTCGCTCTCGTTGCCGAGGCTGGAGTGTAGTAGTGTGATCCTGGCTCACTGCAACCTCCACCTCCCGGGTTCCAGCAAATTCTCCTGCCTCAGCCTCCCAAGTAGCTGGGATTGCAGGCGCCCGCCACCACGCCCGGATAATTTTTGTGTGTTTAGCAGAGACGGGGTTTCACCATGTTGGCCAGGCTGGTCTCGATCTCCTGACCTCAGGTGATCCACCCGCCTCGGCCTCCCAAAGTGCTGGGATGACAGGCGTGAGCCACCGCGCCCGGCCTATACCTCATTTTCTACATGTCGCTTGTTGGAGCTGCTGGTTCAAGTTCCCAGCCAGCCAATGGATGCCAGCACCATTTTTACTCCCCTTTCCCAAGCAAATCGTGCATTTTTGTCTAACGAGAGACATCAGTTTCTCAGGATGATCCTCAAGAACGTTATGGAGTCCATGTTGCAATAGGTTCTCTTTGGGACCTAATGACTCATTTTCCAAAAATCCGCTTCTACTTTTGGTACCCGGTTGCTACGGTGAAATGAAGGTGCCCCGCATCCAGAAAGACGCACTCCTGGACCACAACCGGCGGCTACCTCAGCCCCACGGCTCTGCAGGATCAGGGCTCGGGCAGGCCCCGCGGAGATGAAGAATTTGCAGGGAGCCTCCCTGACTTCCGTCGGCTGTGAATCCTTGTCTGTCAGGGGCGTATCCACAAAATCACCGAATTCATACAGATCGTTTAAATAAATGAACATCATTAAAGTCAAA</p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+
+        5. GENE INFO:
+                1. GENERAL PAGE:
+                    link: http://localhost:8000/geneInfo
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene information page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE INFO</h1>
+
+                            <p>WELCOME TO THE GENE INFO PAGE</p>
+
+                            <form action="geneInfo" method="get">
+
+                                Human gene  <input type="text" name="gene">
+
+                                <br>
+
+                                <input type="submit" value="SEND">
+
+                                <br><br>
+
+                                <br><br>
+
+                            </form>
+
+                            <p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+                2. When FRAT2 is introduced:
+                    link: http://localhost:8000/geneInfo?gene=FRAT2
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene information page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE INFO</h1>
+
+                            <p>The start of the human gene FRAT2 is: 97332497</p></p>The end of the human gene FRAT2 is: 97334709</p></p>The id of the human gene FRAT2 is: ENSG00000181274</p></p>The gen FRAT2 is in  the chromosome: 10</p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+                3. blank space:
+                        link: http://localhost:8000/geneInfo?gene=
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+                4. when the introduced input is not a gene:
+                    link: http://localhost:8000/geneInfo?gene=87sdgveugr42
+                    outcomes:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Error</title>
+
+                        </head>
+
+                        <body style="background-color: red;">
+
+                            <h1>Error 404</h1>
+                            <h2>PAGE NOT FOUND</h2>
+
+                            <p>We're sorry. An error has been found</p>
+
+                        </body>
+
+                        </html>
+
+                5. gene introduced: AL954722.1
+                    link: http://localhost:8000/geneInfo?gene=AL954722.1
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene information page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE INFO</h1>
+
+                            <p>The start of the human gene AL954722.1 is: 253743</p></p>The end of the human gene AL954722.1 is: 255091</p></p>The lenght of the human gene AL954722.1 is: 1348</p></p>The id of the human gene AL954722.1 is: ENSG00000228572</p></p>The gen AL954722.1 is in  the chromosome: X</p>
+
+                            <a href="main_page">Return to the main page</a>
+
+
+
+                        </body>
+
+                        </html>
+
+        6. GENE CALCULATIONS
+                1. GENERAL PAGE:
+                    link: http://localhost:8000/geneCalc
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                            <meta charset="UTF-8">
+
+                            <title>Gene calculations page</title>
+
+                        </head>
+
+                        <body>
+
+                            <h1>GENE CALCULATIONS</h1>
+
+                            <p>WELCOME TO THE GENE CALCULATIONS PAGE</p>
+
+                            <form action="geneCalc" method="get">
+
+                                Human gene  <input type="text" name="gene">
+
+                                <br>
+
+                                <input type="submit" value="SEND">
+
+                                <br><br>
+
+                                <br><br>
+
+                            </form>
+
+                            <p></p>
+
+                            <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+                    2. when FRAT1 is introduced:
+                        link: http://localhost:8000/geneCalc?gene=FRAT1
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Human Gene information page</title>
+
+                            </head>
+
+                            <body>
+
+                                <h1>GENE INFO</h1>
+
+                                <p> The length of the sequence of the human gene FRAT1 is: 2649</p></p>The percentage of the base A in the sequence of the human gene: FRAT1 is 18.0%</p></p>The percentage of the base T in the sequence of the human gene: FRAT1 is 19.7%</p></p>The percentage of the base G in the sequence of the human gene: FRAT1 is 32.0%</p></p>The percentage of the base C in the sequence of the human gene: FRAT1 is 30.2% </p>
+
+                                <a href="main_page">Return to the main page</a>
+
+
+
+                            </body>
+
+                            </html>
+
+                    3. blank space:
+                        link: http://localhost:8000/geneCalc?gene=
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+                    4. when the input is not a gene:
+                        link: http://localhost:8000/geneCalc?gene=34ct%3F%C2%BF
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+                    5. gene introduced: RF00019
+                         link: http://localhost:8000/geneCalc?gene=RF00019
+                         output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Human Gene information page</title>
+
+                            </head>
+
+                            <body>
+
+                                <h1>GENE INFO</h1>
+
+                                <p> The length of the sequence of the human gene RF00019 is: 108</p></p>The percentage of the base A in the sequence of the human gene: RF00019 is 21.3%</p></p>The percentage of the base T in the sequence of the human gene: RF00019 is 39.8%</p></p>The percentage of the base G in the sequence of the human gene: RF00019 is 20.4%</p></p>The percentage of the base C in the sequence of the human gene: RF00019 is 18.5% </p>
+
+                                <a href="main_page">Return to the main page</a>
+
+
+
+                            </body>
+
+                            </html>
+
+        7. GENES IN TEH CHROMOSOME:
+                1. GENERAL PAGE:
+                    link:http://localhost:8000/geneList
+                    output:
+                        <!DOCTYPE html>
+
+                        <html lang="en">
+
+                        <head>
+
+                           <meta charset="UTF-8">
+
+                           <title>Gene List page</title>
+
+                        </head>
+
+                        <body>
+
+                           <h1>GENE LIST</h1>
+
+                           <p>WELCOME TO THE GENE LIST PAGE</p>
+
+                           <form action="geneList" method="get">
+
+                               Human chromosome  <input type="text" name="chromo">
+
+                               <br>
+
+                               Start  <input type="text" name="start">
+
+                               <br>
+
+                               End  <input type="text" name="end">
+
+                               <br>
+
+                               <input type="submit" value="SEND">
+
+                               <br><br>
+
+                               <br><br>
+
+                           </form>
+
+                           <p></p>
+
+                           <a href="main_page">Return to the main page</a>
+
+                        </body>
+
+                        </html>
+
+                    2. blank space:
+                        link: http://localhost:8000/geneList?chromo=&start=&end=
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+                    3. input well introduced:
+                        chromo:6
+                        start:123451
+                        end:1234567
+                        link: http://localhost:8000/geneList?chromo=6&start=123451&end=1234567
+                        output:
+
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                               <meta charset="UTF-8">
+
+                               <title>Gene sequence page</title>
+
+                            </head>
+
+                            <body>
+
+                               <h1>GENE SEQUENCE</h1>
+
+                               <p> The genes in the chromosome 6 of the homo sapiens  between 123451 and 1234567 are: <p>CICP18<p><p>AL035696.2<p><p>AL035696.3<p><p>AL035696.4<p><p>AL035696.1<p><p>DUSP22<p><p>IRF4<p><p>EXOC2<p><p>AL031770.1<p><p>HUS1B<p><p>AL357054.1<p><p>AL357054.4<p><p>AL357054.2<p><p>AL357054.3<p><p>AL392183.1<p><p>AL356130.1<p><p>AL356130.2<p><p>AL033381.2<p><p>AL033381.1<p> </p>
+
+                               <a href="main_page">Return to the main page</a>
+
+
+
+                            </body>
+
+                            </html>
+
+                    4. If start is a bigger number than the end:
+                        link:http://localhost:8000/geneList?chromo=6&start=12345114245&end=1234567
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+                    5. if the chromosome is not in the sequence:
+                        link: http://localhost:8000/geneList?chromo=68976&start=12345&end=1234567
+                        output:
+                            <!DOCTYPE html>
+
+                            <html lang="en">
+
+                            <head>
+
+                                <meta charset="UTF-8">
+
+                                <title>Error</title>
+
+                            </head>
+
+                            <body style="background-color: red;">
+
+                                <h1>Error 404</h1>
+                                <h2>PAGE NOT FOUND</h2>
+
+                                <p>We're sorry. An error has been found</p>
+
+                            </body>
+
+                            </html>
+
+

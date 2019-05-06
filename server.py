@@ -18,7 +18,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 
 
-        # -- Printing the request line
+        # Printing the request line
 
         reqpath = self.path
 
@@ -26,20 +26,17 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
         try:
             contents=""
-            if reqpath == '/main_page' or reqpath == '/':
-
+            if reqpath == '/main_page' or reqpath == '/': # Main menu appears
                 with open("main_page.html", "r") as f:
                     contents = f.read()
                     f.close()
 
-            elif self.path.startswith('/listSpecies'):
+            elif self.path.startswith('/listSpecies'): # List Species menu appears
                 with open("list_species.html", "r") as f:
                     contents = f.read()
                     f.close()
 
-                    if self.path.startswith('/listSpecies?limit='):
-
-                        #PONER DE DONDE ES EL CÓDIGO
+                    if self.path.startswith('/listSpecies?limit='): # In the case that the user introduce a limit
                         server = "http://rest.ensembl.org"
 
                         ext = "/info/species?"
@@ -52,32 +49,31 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                         msg_split = self.path.split('=')
                         limit = msg_split[1]
-                        if limit.isalpha():
+                        if limit.isalpha(): # If it's not a number, an error page appears
                             f = open("error.html", 'r')
-
                             contents = f.read()
                         else:
-                            with open("species_limit.html", "r") as f:
-                                contents = f.read()
+                            with open("species_limit.html", "r") as f:# If the limit is a number (if it is bigger than the number of species, all the species will appear)
+                                contents = f.read()                   # If the limit indicated is 0, all species will appear as cero limit means no limit.
                                 var = ''
                                 lim = 0
                                 for i in species:
-                                    lim += 1
-                                    var += i['name'] + '<p>'
-                                    if str(lim) == limit:
+                                    lim += 1 #To control the limit
+                                    var += i['name'] + '<p>' #To store the species
+                                    if str(lim) == limit: #It stops when the limit is reached
                                         break
 
                                 sentence = 'List of species: ' + '<p>' + var
-                                contents = contents.replace('#', sentence)
+                                contents = contents.replace('#', sentence) # Receplace the info asked for in the html page
 
 
 
             elif self.path.startswith('/karyotype'):
-                with open("karyotype.html", "r") as f:
+                with open("karyotype.html", "r") as f: # Karyotype menu appears
                     contents = f.read()
                     f.close()
 
-                    if self.path.startswith('/karyotype?species='):
+                    if self.path.startswith('/karyotype?species='): # When a specie is requested
 
                         msg_split = self.path.split('=')
 
@@ -90,22 +86,22 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         info = r.json()
 
                         karyotype = info['karyotype']
-                        with open("karyotype_limit.html", "r") as f:
+                        with open("karyotype_limit.html", "r") as f: # Result page of the karyotype asked for is opened
                             contents = f.read()
                             var = ''
                             for i in karyotype:
                                 var += i + ' '
 
                             sentence = 'The karyotype of ' + msg_split[1] + ' is: ' + var
-                            contents = contents.replace('#', sentence)
+                            contents = contents.replace('#', sentence) # Replace the information in the return html page
 
 
 
             elif self.path.startswith('/chromosomeLength'):
-                with open("chromosome_lenght.html", "r") as f:
+                with open("chromosome_lenght.html", "r") as f: # Chromosome Length menu page
                     contents = f.read()
                     f.close()
-                    if self.path.startswith('/chromosomeLength?specie='):
+                    if self.path.startswith('/chromosomeLength?specie='): #When a chromose of a specie is asked
 
                         msg_split = self.path.split('=')
 
@@ -129,20 +125,19 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                             if chromo == i['name']:
                                 length = i['length']
 
-                                with open("chromo_limit.html", "r") as f:
+                                with open("chromo_limit.html", "r") as f: #Result page is opened
                                     contents = f.read()
                                     sentence = 'The length of the chromosome ' + chromo + ' of the species ' + msg_split2[1] + ' is: ' + str(length)
                                     contents = contents.replace('#', sentence)
 
 
 
-            elif self.path.startswith('/geneSeq'):
+            elif self.path.startswith('/geneSeq'): #Gene sequence menu page
                 with open("gene_seq.html", "r") as f:
                     contents = f.read()
                     f.close()
 
-                    if self.path.startswith('/geneSeq?gene='):
-
+                    if self.path.startswith('/geneSeq?gene='): #When the user select a gene
                         msg_split = self.path.split('=')
 
                         server = "http://rest.ensembl.org"
@@ -167,13 +162,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                         gene_sequence = info['seq']
 
                         sentence = 'The sequence of the human gene ' + msg_split[1] + ' is ' + gene_sequence
-                        with open("gene_seqRes.html", "r") as f:
+                        with open("gene_seqRes.html", "r") as f: #Result page
                             contents = f.read()
                             contents = contents.replace('#', sentence)
 
 
 
-            elif self.path.startswith('/geneInfo'):
+            elif self.path.startswith('/geneInfo'): #Gene information menu page is opened
                 with open("gene_info.html", "r") as f:
                     contents = f.read()
                     f.close()
@@ -208,7 +203,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                     chromo = info2['seq_region_name']
 
-                    with open("gene_info_gene.html", "r") as f:
+                    with open("gene_info_gene.html", "r") as f: #Result page
                             contents = f.read()
                             len= end-start
                             text= 'The start of the human gene ' + msg_split[1] + ' is: ' + str(start) + '</p></p>' + 'The end of the human gene ' + msg_split[1] + ' is: ' + str(end) + '</p></p>' + 'The lenght of the human gene ' + msg_split[1] + ' is: ' + str(len) +'</p></p>' + 'The id of the human gene ' + msg_split[1] + ' is: ' + str(id) +'</p></p>' + 'The gen ' + msg_split[1] + ' is in  the chromosome: ' + str(chromo)
@@ -218,11 +213,11 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 
             elif self.path.startswith('/geneCalc'):
-                with open("gene_calc.html", "r") as f:
+                with open("gene_calc.html", "r") as f: # Gene calculation menu page
                     contents = f.read()
                     f.close()
 
-                if self.path.startswith('/geneCalc?gene='):
+                if self.path.startswith('/geneCalc?gene='): #When a gene is introduced
 
                     msg_split = self.path.split('=')
 
@@ -247,7 +242,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
                     gene_sequence = info['seq']
 
-                    seq = Seq(gene_sequence)
+                    seq = Seq(gene_sequence) # The function stored in the document Seq.py
 
                     length = str(seq.len())
 
@@ -270,18 +265,18 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     per_c = 'The percentage of the base C in the sequence of the human gene: ' + msg_split[1] + ' is ' + percentageC + '%'
 
                     text = sentence + per_a + per_t + per_g + per_c
-                    with open("gene_calResult.html", "r") as f:
+                    with open("gene_calResult.html", "r") as f: # Return a result page with the operations
                         contents = f.read()
                         contents = contents.replace('#', text)
 
-                # Return the names of the genes located in the chromosome "chromo" from the start to end positions
 
-            elif self.path.startswith('/geneList'):
+
+            elif self.path.startswith('/geneList'): # Gene list menu page
                 with open("gene_list.html", "r") as f:
                     contents = f.read()
                     f.close()
 
-                if self.path.startswith('/geneList?chromo='):
+                if self.path.startswith('/geneList?chromo='): # When the data is introduced
 
                     msg_split = self.path.split('=')
 
@@ -303,13 +298,13 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
                     for i in inform:
                         sentence += '<p>' + i['external_name'] + '<p>'
 
-                    with open("gene_listRes.html", "r") as f:
+                    with open("gene_listRes.html", "r") as f: # Return page for the information asked for
                             contents = f.read()
                             contents = contents.replace('#', sentence)
 
 
 
-            self.send_response(200)  # -- Status line: OK!
+            self.send_response(200)  # Status line: OK!
 
             # Define the content-type header:
 
@@ -326,7 +321,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 
 
-        except KeyError:
+        except KeyError: # In the case that an error occurs. For example: the specie is not in the data, the input must be a nuber but the user introduce letters...
             f = open('error.html', 'r')
             contents = f.read()
 
@@ -341,7 +336,7 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
             # Send the response message
             self.wfile.write(str.encode(contents))
 
-        except TypeError:
+        except TypeError: # In the case that an error occurs. The input is not correct, black spaces...
             f = open('error.html', 'r')
             contents = f.read()
 
@@ -363,9 +358,9 @@ class TestHandler(http.server.BaseHTTPRequestHandler):
 
 
 
-# -- Main program
+#  Main program
 
-socketserver.TCPServer.allow_reuse_address = True
+socketserver.TCPServer.allow_reuse_address = True # Given by the professor for avoiding the PORT in use error
 with socketserver.TCPServer(("", PORT), TestHandler) as httpd:
 
     print("Serving at PORT:  {}".format(PORT))
